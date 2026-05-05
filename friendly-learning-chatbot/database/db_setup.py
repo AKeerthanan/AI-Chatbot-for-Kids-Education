@@ -13,14 +13,26 @@ def init_db(db_path):
     first_time = not os.path.exists(db_path)
     conn = get_db_connection(db_path)
     conn.execute(
-        '''
+        """
         CREATE TABLE IF NOT EXISTS knowledge (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             category TEXT,
             keywords TEXT,
             answer TEXT
         )
-        '''
+        """
+    )
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS pending_knowledge (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            question TEXT,
+            keywords TEXT,
+            answer TEXT,
+            status TEXT DEFAULT 'pending',
+            created_at TEXT
+        )
+        """
     )
     conn.commit()
 

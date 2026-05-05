@@ -1,5 +1,27 @@
-category,keywords,answer
-greeting,"hello,hi,hey,good morning,good afternoon","Hello! I am a friendly learning chatbot for kids."
-greeting,"goodbye,bye,see you,see ya","Goodbye! Come back anytime to learn more."
-greeting,"thanks,thank you,thanks","You are welcome! I'm happy to help."
-greeting,"how are you,how,are,you","I am a chatbot and I am doing great. How can I help you today?"
+category,question,keywords,answer
+smalltalk,Hello,hello hi hey,Hello. How can I help you today?
+smalltalk,Hi,hi hello hey,Hi there. What do you want to learn?
+smalltalk,Good morning,good morning morning,Good morning. Have a great day!
+smalltalk,Good afternoon,good afternoon afternoon,Good afternoon. How is your day going?
+smalltalk,Good evening,good evening evening,Good evening. Hope you had a nice day!
+smalltalk,How are you?,how are you fine,I am doing great. How about you?
+smalltalk,Thank you,thank you thanks,You are welcome.
+smalltalk,Bye,bye goodbye see you,Goodbye. See you soon!
+smalltalk,What is your name?,name who are you,I am your friendly learning chatbot.
+smalltalk,Who created you?,creator developer created,I was created by students as a learning project.
+smalltalk,What can you do?,help abilities do learn,I can help you learn math, science, and English.
+smalltalk,Tell me a joke,joke funny laugh,Why did the math book look sad? Because it had too many problems.
+smalltalk,I am bored,bored nothing to do,Let's learn something fun. You can ask me a math, science, or English question.
+smalltalk,I'm bored,im bored bored,Let's learn something fun. You can ask me a math, science, or English question.
+smalltalk,I am sleepy,i am sleepy sleepy,Maybe you need some rest. Taking a short break can help.
+smalltalk,I'm sleepy,im sleepy sleepy,Maybe you need some rest. Taking a short break can help.
+smalltalk,I am tired,tired sleepy,Maybe you need some rest. Taking a short break can help.
+smalltalk,I'm tired,im tired tired,Maybe you need some rest. Taking a short break can help.
+smalltalk,I don't feel well,i don't feel well dont feel well,I'm sorry you feel unwell. Please tell a parent or teacher so they can help you.
+smalltalk,I am sad,sad unhappy upset,I'm sorry you feel sad. Please talk to a parent, teacher, or someone you trust.
+smalltalk,I feel scared,scared afraid fear,I'm sorry you feel scared. Stay near someone you trust and tell them what happened.
+smalltalk,I do not feel well,sick unwell not feeling good,I'm sorry you feel unwell. Please tell a parent or teacher so they can help you.
+smalltalk,I am tired,tired sleepy,Maybe you need some rest. Taking a short break can help.
+smalltalk,I feel angry,angry mad upset,Take a deep breath. Talking calmly to someone you trust can help.
+smalltalk,I do not know what to ask,do not know ask confused,That is okay. You can ask me about math, science, or English.
+smalltalk,Can you help me?,help me support,Of course I am here to help you learn.

@@ -1,6 +1,20 @@
-category,keywords,answer
-english,"noun,nouns,person,place,thing,idea","A noun is a word for a person, place, thing, or idea."
-english,"verb,verbs,action,doing,is,are","A verb is a word that shows action or being."
-english,"adjective,describing,word,color,size,shape","An adjective describes a person, place, thing, or idea."
-english,"sentence,subject,predicate,thought","A sentence is a group of words that tells a complete idea."
-english,"question,ask,what,why,how","When you ask for information, you are asking a question."
+category,question,keywords,answer
+english,What is a noun?,noun naming word person place thing,A noun is a word that names a person, place, animal, or thing.
+english,Explain noun,noun naming word grammar,A noun is used to name something.
+english,What is a verb?,verb action doing word,A verb is a word that shows an action.
+english,Explain verb,verb action doing,A verb tells what someone or something is doing.
+english,What is an adjective?,adjective describing word,A descriptive word that tells more about a noun.
+english,Explain adjective,adjective describing grammar,An adjective describes how something looks, feels, or behaves.
+english,What is an adverb?,adverb describes verb how when where,An adverb gives more information about a verb.
+english,What is a sentence?,sentence words meaning,A sentence is a group of words that gives a complete idea.
+english,Explain sentence,sentence words grammar,A sentence expresses a complete idea.
+english,What is a vowel?,vowel a e i o u letters,Vowels are the letters a, e, i, o, and u.
+english,What is a consonant?,consonant letters alphabet,Consonants are all letters except vowels.
+english,What is reading?,reading books learn words,Reading means understanding written words.
+english,What is writing?,writing words sentences,Writing means putting words together to share ideas.
+english,What is speaking?,speaking talking words,Speaking means saying words out loud.
+english,What is spelling?,spelling letters words,Spelling means writing the letters of a word in the correct order.
+english,What is grammar?,grammar rules language sentences,Grammar is the set of rules used to make correct sentences.
+english,What is punctuation?,punctuation full stop comma question mark,Punctuation marks help make writing clear.
+english,What is a question?,question ask answer,A question is a sentence used to ask something.
+english,Help me with English,english learn grammar reading writing,I can help you learn English, grammar, reading, and writing.

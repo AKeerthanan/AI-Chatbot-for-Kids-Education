@@ -1,8 +1,24 @@
-category,keywords,answer
-math,"addition,add,plus,sum,total","Addition means putting numbers together to find the total."
-math,"subtraction,subtract,minus,difference,less","Subtraction means taking one number away from another."
-math,"multiplication,multiply,times,product","Multiplication means finding the total when a number is taken several times."
-math,"division,divide,sharing,quotient","Division means splitting a number into equal parts."
-math,"1+1,one plus one","2"
-math,"5+3,five plus three","8"
-math,"10-4,ten minus four","6"
+category,question,keywords,answer
+math,What is addition?,addition add plus sum total combine numbers,Addition means putting numbers together to get a total.
+math,Explain addition,addition add plus sum total combine,Addition is when you combine numbers to get a bigger number.
+math,How do you add numbers?,addition add plus sum calculate,You add numbers by combining them to get the total.
+math,What is subtraction?,subtraction minus take away difference subtract,Subtraction means taking one number away from another.
+math,Explain subtraction,subtraction minus take away difference,Subtraction helps you find how much is left.
+math,What is multiplication?,multiplication times product repeated addition,Multiplication is adding the same number many times.
+math,Explain multiplication,multiplication times product repeated addition,Multiplication is a faster way to add equal numbers.
+math,What is division?,division divide share equally split,Division means sharing something equally.
+math,Explain division,division divide share split equally,Division splits a number into equal parts.
+math,What is an even number?,even number divisible by two,An even number can be divided by 2 with no remainder.
+math,What is an odd number?,odd number not divisible by two,An odd number cannot be divided by 2 exactly.
+math,What is a fraction?,fraction part whole numerator denominator,A fraction shows part of a whole.
+math,What is a decimal?,decimal point number fraction,A decimal is a number with a point that shows parts of a whole.
+math,What is a shape?,shape circle square triangle rectangle,A shape is the form or outline of something.
+math,What is a circle?,circle round shape,A circle is a round shape with no corners.
+math,What is a square?,square four equal sides shape,A square has four equal sides and four corners.
+math,What is a triangle?,triangle three sides shape,A triangle has three sides and three corners.
+math,What is a rectangle?,rectangle four sides shape,A rectangle has four sides and four corners.
+math,Help me with math,math help calculate numbers,I can help you with math. You can ask me to explain a topic or calculate numbers.
+math,I do not understand addition,addition help explain,I can help. Addition means putting numbers together.
+math,I do not understand subtraction,subtraction help explain,I can help. Subtraction means taking away.
+math,I do not understand multiplication,multiplication help explain,I can help. Multiplication is repeated addition.
+math,I do not understand division,division help explain,I can help. Division means sharing equally.

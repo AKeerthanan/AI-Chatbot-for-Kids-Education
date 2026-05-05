@@ -1,6 +1,22 @@
-category,keywords,answer
-science,"water,boil,boils,celsius,heat","Water boils at 100 degrees Celsius at normal pressure."
-science,"plant,plants,sun,water,air,soil","Plants need sunlight, water, air, and soil to grow."
-science,"earth,planet,space,world","Earth is the planet we live on."
-science,"gravity,fall,gravity,pull","Gravity is the force that pulls objects toward Earth."
-science,"energy,power,light,heat","Energy helps things move and work."
+category,question,keywords,answer
+science,What is water?,water h2o liquid life,Water is a liquid that all living things need to survive.
+science,Explain water,water liquid h2o life,Water is made of hydrogen and oxygen.
+science,What is the sun?,sun star heat light energy,The sun is a star that gives us heat and light.
+science,Why is the sun important?,sun heat light life,The sun helps plants grow and keeps Earth warm.
+science,What is air?,air oxygen breathing gas,Air is what we breathe to stay alive.
+science,Explain air,air oxygen gas breathing,Air contains oxygen, which humans and animals need.
+science,What is gravity?,gravity pull earth force,Gravity is the force that pulls things toward Earth.
+science,Why do things fall?,gravity pull earth fall,Things fall because of gravity.
+science,What is evaporation?,evaporation water vapor heat,Evaporation is when water turns into vapor because of heat.
+science,Explain evaporation,evaporation water heat vapor,Evaporation happens when liquid water changes into gas.
+science,What is a plant?,plant green living photosynthesis,Plants are living things that can make their own food.
+science,What is photosynthesis?,photosynthesis plants sunlight food,Photosynthesis is how plants use sunlight to make food.
+science,What is an animal?,animal living move grow,Animals are living things that can move and grow.
+science,What is Earth?,earth planet home humans,Earth is the planet where we live.
+science,Why is the sky blue?,sky blue light scattering,The sky looks blue because sunlight spreads in the air.
+science,What is light?,light energy see brightness,Light is energy that helps us see things.
+science,What is heat?,heat energy warm temperature,Heat is energy that makes things warm.
+science,What is sound?,sound vibration hear,Sound is made by vibrations that we can hear.
+science,What is electricity?,electricity energy power current,Electricity is a form of energy that powers lights and machines.
+science,What is a magnet?,magnet attract metal force,A magnet is an object that can pull some metals.
+science,Tell me about science,science learning nature world,Science helps us understand the world around us.

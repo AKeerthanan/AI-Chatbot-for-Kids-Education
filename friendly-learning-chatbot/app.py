@@ -1,7 +1,9 @@
 import os
 import re
 from flask import Flask, request, jsonify, render_template, session
-from chatbot.chatbot_engine import get_response, save_knowledge
+from chatbot.chatbot_engine import get_response, UNKNOWN_PROMPT
+from chatbot.trainer import save_pending_knowledge
+from chatbot.nlp_processor import normalize_text, normalize_repeated_letters, normalize_greeting, is_question_input, calculate_expression, get_small_talk_response
 from database.db_setup import init_db
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -10,15 +12,42 @@ DATABASE_PATH = os.path.join(BASE_DIR, 'database', 'chatbot.db')
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key')
 
-SKIP_KEYWORDS = {'skip', 'cancel', 'no', 'never mind', 'nevermind'}
-TEACH_PREFIX = 'teach:'
-UNKNOWN_PROMPT = 'I don’t know that yet. If you want to teach me, type: teach: your answer. Or type skip.'
+CANCEL_KEYWORDS = {'skip', 'cancel', 'no', 'never mind', 'nevermind', 'dont know', 'don\'t know'}
+YES_KEYWORDS = {'yes', 'y'}
 
 
-def normalize_text(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9\s:]', '', text)
-    return ' '.join(text.split())
+def has_vowel(text):
+    return any(char in 'aeiou' for char in text.lower())
+
+
+def is_random_letters(text):
+    text_lower = text.lower()
+    letters = ''.join([char for char in text_lower if char.isalpha()])
+    if len(letters) < 4:
+        return False
+    vowel_count = sum(1 for char in letters if char in 'aeiou')
+    if vowel_count == 0:
+        return True
+    return (vowel_count / len(letters)) < 0.2
+
+
+def is_invalid_answer(message, normalized_text):
+    answer = message.strip()
+    if len(answer) < 4:
+        return True
+    if is_question_input(message, normalized_text):
+        return True
+    if get_small_talk_response(message) is not None:
+        return True
+    if calculate_expression(message) is not None:
+        return True
+    if not has_vowel(normalized_text):
+        return True
+    if is_random_letters(normalized_text):
+        return True
+    if len(normalized_text.split()) == 1 and len(normalized_text) < 4:
+        return True
+    return False
 
 
 @app.route('/')
@@ -38,32 +67,39 @@ def chat():
 
     normalized = normalize_text(message)
     pending_question = session.get('pending_question')
+    pending_answer = session.get('pending_answer')
+
+    if pending_answer:
+        if normalized in YES_KEYWORDS:
+            question = session.pop('pending_question', None)
+            answer_text = session.pop('pending_answer', None)
+            if not question or not answer_text:
+                return jsonify({'response': 'Sorry, something went wrong. Please ask your question again.'}), 500
+            saved = save_pending_knowledge(question, answer_text, DATABASE_PATH)
+            if saved:
+                return jsonify({'response': 'Thanks! I saved it for review :)'})
+            return jsonify({'response': 'That answer is already saved. :)'})
+        if normalized in CANCEL_KEYWORDS:
+            session.pop('pending_question', None)
+            session.pop('pending_answer', None)
+            return jsonify({'response': 'That\'s okay :)'})
+        return jsonify({'response': 'Please type yes or no to save this answer.'})
 
     if pending_question:
-        if normalized in SKIP_KEYWORDS:
+        if normalized in CANCEL_KEYWORDS:
             session.pop('pending_question', None)
-            return jsonify({'response': 'Okay, no problem 😊'})
-
-        if normalized.startswith(TEACH_PREFIX):
-            answer_text = message[len(TEACH_PREFIX):].strip()
-            if not answer_text or answer_text.lower() in SKIP_KEYWORDS:
-                session.pop('pending_question', None)
-                return jsonify({'response': 'Okay, no problem 😊'})
-
-            saved = save_knowledge(pending_question, answer_text, DATABASE_PATH)
+            return jsonify({'response': 'That\'s okay :)'})
+        if is_question_input(message, normalized):
             session.pop('pending_question', None)
-            if saved:
-                return jsonify({'response': 'Thanks! I learned something new.'})
-            return jsonify({'response': 'I could not save that right now. Try again.'}), 500
-
-        session.pop('pending_question', None)
-        response_text = get_response(message, DATABASE_PATH)
-        if response_text == UNKNOWN_PROMPT:
-            session['pending_question'] = message
-        return jsonify({'response': response_text})
-
-    if normalized.startswith(TEACH_PREFIX):
-        return jsonify({'response': 'I do not have a question to learn yet. Ask a question first.'})
+            response_text = get_response(message, DATABASE_PATH)
+            if response_text == UNKNOWN_PROMPT:
+                session['pending_question'] = message
+            return jsonify({'response': response_text})
+        if is_invalid_answer(message, normalized):
+            session.pop('pending_question', None)
+            return jsonify({'response': 'That does not look like a clear answer :)'})
+        session['pending_answer'] = message
+        return jsonify({'response': f'You said: "{message}". Should I save this? Type yes or no.'})
 
     response_text = get_response(message, DATABASE_PATH)
     if response_text == UNKNOWN_PROMPT:

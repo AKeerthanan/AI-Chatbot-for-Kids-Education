@@ -1,7 +1,7 @@
 import sqlite3
 from .nlp_processor import get_keywords
 
-UNKNOWN_PROMPT = 'I don’t know that yet. If you want to teach me, type: teach: your answer. Or type skip.'
+UNKNOWN_PROMPT = 'I don\'t know that yet. Can you tell me the answer?'
 
 
 def get_db_connection(db_path):
