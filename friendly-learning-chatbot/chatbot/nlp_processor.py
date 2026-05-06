@@ -18,32 +18,32 @@ SMALL_TALK_RESPONSES = {
     'how are you': 'I am doing great, thank you!',
     'thank you': 'You are welcome!',
     'thanks': 'You are welcome!',
-    'yes': 'That is great!',
+    'yes': 'Okay :)',
+    'yeah': 'Okay :)',
     'no': 'That is okay :)',
-    'okay': 'Okay!',
-    'ok': 'Okay!',
-    'okey': 'Okay!',
-    'nah': 'That is okay',
-    'nope': 'That is okay',
+    'nah': 'That is okay :)',
+    'nope': 'That is okay :)',
+    'okay': 'Okay! :)',
+    'ok': 'Okay! :)',
+    'okey': 'Okay! :)',
     'bye': 'Goodbye! See you soon!',
     'goodbye': 'Goodbye! See you soon!',
     'see you': 'Goodbye! See you soon!',
-    'i am bored': 'Let us learn something fun. You can ask me a math, science, or English question.',
-    'im bored': 'Let us learn something fun. You can ask me a math, science, or English question.',
-    'i am sleepy': 'Maybe you need some rest. Taking a short break can help.',
-    'im sleepy': 'Maybe you need some rest. Taking a short break can help.',
-    'i am tired': 'Maybe you need some rest. Taking a short break can help.',
-    'im tired': 'Maybe you need some rest. Taking a short break can help.',
-    'i do not feel well': 'I am sorry you feel that way. Please tell a parent or teacher so they can help you.',
-    'i dont feel well': 'I am sorry you feel that way. Please tell a parent or teacher so they can help you.',
-    'i am sad': 'I am sorry you feel sad. It is okay to feel sad sometimes. Talk to someone you trust about how you feel.',
-    'i am angry': 'It is okay to feel angry. Try taking deep breaths or talking about what made you angry.',
-    'im angry': 'It is okay to feel angry. Try taking deep breaths or talking about what made you angry.',
-    'i am scared': 'It is normal to feel scared sometimes. Remember, you are safe. Talk to a trusted adult if you need help.',
-    'help': 'I am here to help! Ask me questions about math, science, English, or tell me how you feel.',
-    'what can you do': 'I can answer questions about math, science, and English. I can also listen if you want to talk!',
-    'what is your name': 'I am a Friendly Learning Chatbot! Nice to meet you!'
 }
+
+EMOTION_RESPONSES = {
+    'positive': 'That is great to hear :) What would you like to learn today?',
+    'sad': 'I am sorry you feel that way. Please talk to a parent, teacher, or someone you trust',
+    'bored': 'Let us learn something fun. You can ask me a math, science, or English question :)',
+    'tired': 'Maybe you need a short break. Resting can help you feel better :)',
+    'sick': 'I am sorry you feel unwell. Please tell a parent or teacher so they can help you'
+}
+
+POSITIVE_MOOD_KEYWORDS = {'great', 'good', 'happy', 'fine', 'excited', 'amazing', 'nice'}
+SAD_KEYWORDS = {'sad', 'unhappy', 'upset', 'crying', 'lonely', 'bad'}
+BORED_KEYWORDS = {'bored', 'boring', 'nothing to do'}
+TIRED_KEYWORDS = {'tired', 'sleepy', 'lazy', 'exhausted', 'rest', 'sleep'}
+SICK_KEYWORDS = {'sick', 'unwell', 'fever', 'pain', 'feeling well'}
 
 
 def normalize_repeated_letters(text):
@@ -105,6 +105,39 @@ def is_question_input(text, normalized_text):
     if words and words[0] in {'what', 'why', 'how', 'who', 'where', 'when'}:
         return True
     return False
+
+
+def detect_emotion(text):
+    """Detect emotion-based intent from user input."""
+    normalized = normalize_text(text)
+    words = set(normalized.split())
+    
+    # Check for positive mood
+    if any(word in POSITIVE_MOOD_KEYWORDS for word in words):
+        return 'positive'
+    
+    # Check for sadness
+    if any(word in SAD_KEYWORDS for word in words):
+        return 'sad'
+    
+    # Check for boredom
+    if any(word in BORED_KEYWORDS for word in words):
+        return 'bored'
+    
+    # Check for tired/lazy
+    if any(word in TIRED_KEYWORDS for word in words):
+        return 'tired'
+    
+    # Check for sick
+    if any(word in SICK_KEYWORDS for word in words):
+        return 'sick'
+    
+    return None
+
+
+def get_emotion_response(emotion_type):
+    """Get response for detected emotion."""
+    return EMOTION_RESPONSES.get(emotion_type)
 
 
 def get_small_talk_response(text):
